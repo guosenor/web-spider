@@ -1,7 +1,6 @@
 package fetcher
 
 import (
-	"io"
 	"golang.org/x/text/encoding"
 	"bufio"
 	"golang.org/x/net/html/charset"
@@ -22,12 +21,13 @@ func Fetch(url string)([]byte,error)  {
 	if res.StatusCode != http.StatusOK {
 		return nil ,fmt.Errorf("wrong statusCode:%d",res.StatusCode)
 	}
-	e := determineEncoding(res.Body)
-	utf8Reader := transform.NewReader(res.Body, e.NewDecoder())
+	bodyReader:=bufio.NewReader(res.Body)
+	e := determineEncoding(bodyReader)
+	utf8Reader := transform.NewReader(bodyReader, e.NewDecoder())
 	return ioutil.ReadAll(utf8Reader)
 }
-func determineEncoding(r io.Reader) encoding.Encoding {
-	bytes, err := bufio.NewReader(r).Peek(1024)
+func determineEncoding(r *bufio.Reader) encoding.Encoding {
+	bytes, err := r.Peek(1024)
 	if err != nil {
 		return unicode.UTF8
 	}
