@@ -12,7 +12,7 @@ func Run(seeds ...Request)  {
 	}
 	for len(requests)>0{
 		r:=requests[0]
-		log.Printf("Url:%s\n",r.Url)
+		log.Printf("Fecth url:%s  \n",r.Url)
 		requests = requests[1:]
 		body,err:=fetcher.Fetch(r.Url)
 		if err!=nil{

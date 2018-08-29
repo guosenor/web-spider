@@ -13,7 +13,7 @@ func TestParserCityList(t *testing.T) {
 	result := ParserCityList(contents)
 	const size = 470
 	expectedUrls := []string{"http://city.zhenai.com/aba", "http://city.zhenai.com/akesu", "http://city.zhenai.com/alashanmeng"}
-	expectedCities := []string{"阿坝", "阿克苏", "阿拉善盟"}
+	expectedCities := []string{"City 阿坝", "City 阿克苏", "City 阿拉善盟"}
 
 	if len(result.Requests) != size {
 		t.Error("result should have %d Requests but had %d", size, len(result.Requests))
