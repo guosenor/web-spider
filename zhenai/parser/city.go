@@ -16,7 +16,7 @@ func ParseCtiy(contents[]byte)engine.ParserResult  {
 		log.Printf("get User %s \n",string(m[2]))
 		result.Requests=append(result.Requests,engine.Request{
 			Url:string(m[1]),
-			ParserFunc:engine.NilPaser,
+			ParserFunc:ParserUserProfile,
 		})
 	}
 	return result

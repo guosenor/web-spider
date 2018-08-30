@@ -19,7 +19,7 @@ func Fetch(url string)([]byte,error)  {
 	}
 	defer res.Body.Close()
 	if res.StatusCode != http.StatusOK {
-		return nil ,fmt.Errorf("wrong statusCode:%d",res.StatusCode)
+		return nil ,fmt.Errorf(" wrong statusCode:%d",res.StatusCode)
 	}
 	bodyReader:=bufio.NewReader(res.Body)
 	e := determineEncoding(bodyReader)

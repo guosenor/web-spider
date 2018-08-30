@@ -16,7 +16,7 @@ func Run(seeds ...Request)  {
 		requests = requests[1:]
 		body,err:=fetcher.Fetch(r.Url)
 		if err!=nil{
-			log.Print("Fetcher error fetch url: %s %v \n",r.Url,err)
+			log.Printf("Fetcher error fetch url: %s %v \n",r.Url,err)
 			continue
 		}
 		parseResult := r.ParserFunc(body)
