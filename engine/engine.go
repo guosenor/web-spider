@@ -5,21 +5,34 @@ import (
 	"log"
 )
 
-func Run(seeds ...Request)  {
+type SimpleEngine struct {
+
+} 
+func (e SimpleEngine)Run(seeds ...Request)  {
 	var requests []Request
 	for _,r :=range seeds  {
 		requests=append(requests,r)
 	}
 	for len(requests)>0{
 		r:=requests[0]
-		log.Printf("Fecth url:%s  \n",r.Url)
 		requests = requests[1:]
-		body,err:=fetcher.Fetch(r.Url)
+
+		parseResult ,err := worker(r)
 		if err!=nil{
-			log.Printf("Fetcher error fetch url: %s %v \n",r.Url,err)
 			continue
 		}
-		parseResult := r.ParserFunc(body)
+
 		requests = append(requests,parseResult.Requests...)
 	}
+}
+
+func worker(r Request)(ParserResult ,error)  {
+
+	log.Printf("Fecth url:%s  \n",r.Url)
+	body,err:=fetcher.Fetch(r.Url)
+	if err!=nil{
+		log.Printf("Fetcher error fetch url: %s %v \n",r.Url,err)
+		return ParserResult{},err
+	}
+	return r.ParserFunc(body),nil
 }

@@ -9,9 +9,12 @@ import (
 	"io/ioutil"
 	"fmt"
 	"golang.org/x/text/encoding/unicode"
+	"time"
 )
 
+var limter  = time.Tick(100 * time.Millisecond)
 func Fetch(url string)([]byte,error)  {
+	<-limter
 	res, err := http.Get(url)
 
 	if err != nil {
