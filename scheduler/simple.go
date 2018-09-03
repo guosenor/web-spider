@@ -11,6 +11,11 @@ func (s *SampleScheduler) Submit(r engine.Request)  {
 		s.workerChan <- r
 	}()
 }
-func (s *SampleScheduler) ConfigureMasterWorkerChan( c chan engine.Request)  {
-	s.workerChan=c
+func (s *SampleScheduler) WorkerChan() chan engine.Request {
+    return   s.workerChan
+}
+func (s *SampleScheduler) Run()  {
+	s.workerChan = make(chan engine.Request)
+}
+func (s *SampleScheduler) WorkerReady(w chan engine.Request)  {
 }

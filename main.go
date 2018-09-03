@@ -7,10 +7,6 @@ import (
 )
 
 func main() {
-	//engine.SimpleEngine{}.Run(engine.Request{
-	//	Url:"http://city.zhenai.com/",
-	//	ParserFunc:parser.ParserCityList,
-	//})
 
 	e := engine.ConcurrentEngine{
 		Scheduler:   &scheduler.QueuedScheduler{},
