@@ -45,7 +45,7 @@ func createWorker(s Scheduler, out chan ParserResult) {
 	go func() {
 		for {
 			s.WorkerReady(in)
-			request := <- in
+			request := <-in
 			result, err := worker(request)
 			if err != nil {
 				continue
