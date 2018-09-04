@@ -1,10 +1,5 @@
 package engine
 
-import (
-	"fmt"
-	"log"
-)
-
 type ConcurrentEngine struct {
 	Scheduler   Scheduler
 	WorkerCount int
@@ -19,7 +14,7 @@ type ReadyNotifier interface {
 	WorkerReady(chan Request)
 } 
 func (e *ConcurrentEngine) Run(seeds ...Request) {
-
+	gotUrls := make(map[string] int)
 	out := make(chan ParserResult)
 	e.Scheduler.Run()
 	for i := 0; i < e.WorkerCount; i++ {
@@ -32,13 +27,17 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 
 	for {
 		result := <-out
-		for _, item := range result.Items {
-			log.Printf("Get item : %v", item)
-		}
-		fmt.Println()
+		//for _, item := range result.Items {
+		//	log.Printf("Get item : %v", item)
+		//}
+		//fmt.Println()
 
 		for _, request := range result.Requests {
-			e.Scheduler.Submit(request)
+			if gotUrls[request.Url] == 0{
+				e.Scheduler.Submit(request)
+				gotUrls[request.Url] =1
+			}
+
 		}
 	}
 }

@@ -10,10 +10,12 @@ func main() {
 
 	e := engine.ConcurrentEngine{
 		Scheduler:   &scheduler.QueuedScheduler{},
-		WorkerCount: 50,
+		WorkerCount: 10,
 	}
 	e.Run(engine.Request{
-		Url:        "http://city.zhenai.com/",
-		ParserFunc: parser.ParserCityList,
+		//Url:        "http://city.zhenai.com/",
+		//ParserFunc: parser.ParserCityList,
+		Url:"http://city.zhenai.com/beijing",
+		ParserFunc:parser.ParseCtiy,
 	})
 }
