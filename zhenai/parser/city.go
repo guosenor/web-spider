@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/guosenor/web-spider/engine"
+	"web-spider/engine"
 	"regexp"
 )
 var cityRe = regexp.MustCompile(`<a href="(http://album.zhenai.com/u/[0-9]+)"[^>]*>([^<]+)</a>`)

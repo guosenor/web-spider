@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/guosenor/web-spider/engine"
+	"web-spider/engine"
 	"regexp"
 )
 const cityListRe=`<a href="(http://city.zhenai.com/[0-9a-z]+)"[^>]*>([^<]+)</a>`

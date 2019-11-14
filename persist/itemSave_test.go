@@ -2,7 +2,7 @@ package persist
 
 import (
 	"testing"
-	"github.com/guosenor/web-spider/model"
+	"web-spider/model"
 	"gopkg.in/olivere/elastic.v5"
 	"context"
 	"encoding/json"

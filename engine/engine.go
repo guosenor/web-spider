@@ -1,7 +1,7 @@
 package engine
 
 import (
-	"github.com/guosenor/web-spider/fetcher"
+	"web-spider/fetcher"
 	"log"
 )
 

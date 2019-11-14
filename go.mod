@@ -1,4 +1,4 @@
-module github.com/guosenor/web-spider
+module web-spider
 
 go 1.12
 

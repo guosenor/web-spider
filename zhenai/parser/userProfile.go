@@ -1,10 +1,10 @@
 package parser
 
 import (
-	"github.com/guosenor/web-spider/engine"
+	"web-spider/engine"
 	"regexp"
 	"strconv"
-	"github.com/guosenor/web-spider/model"
+	"web-spider/model"
 	"log"
 )
 var nameRe = regexp.MustCompile(`<a class="name fs24">([^<]+)</a>`)

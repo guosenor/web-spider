@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/guosenor/web-spider/engine"
-	"github.com/guosenor/web-spider/scheduler"
-	"github.com/guosenor/web-spider/zhenai/parser"
-	"github.com/guosenor/web-spider/persist"
+	"web-spider/engine"
+	"web-spider/persist"
+	"web-spider/scheduler"
+	"web-spider/zhenai/parser"
 )
 
 func main() {
@@ -12,12 +12,12 @@ func main() {
 	e := engine.ConcurrentEngine{
 		Scheduler:   &scheduler.QueuedScheduler{},
 		WorkerCount: 100,
-		ItemChan:persist.ItemSave(),
+		ItemChan:    persist.ItemSave(),
 	}
 	e.Run(engine.Request{
 		//Url:        "http://city.zhenai.com/",
 		//ParserFunc: parser.ParserCityList,
-		Url:"http://www.zhenai.com/zhenghun",
-		ParserFunc:parser.ParseCtiy,
+		Url:        "http://www.zhenai.com/zhenghun",
+		ParserFunc: parser.ParseCtiy,
 	})
 }
