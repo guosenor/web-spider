@@ -1,11 +1,12 @@
 package persist
 
 import (
-	"log"
-	"gopkg.in/olivere/elastic.v5"
 	"context"
+	"gopkg.in/olivere/elastic.v5"
+	"log"
 )
 
+// ItemSave 保存
 func ItemSave() chan interface{} {
 	out := make(chan interface{})
 	itemCount := 0
@@ -25,7 +26,7 @@ func saveToElastic(item interface{}) (id string, err error) {
 	}
 	res, err := client.Index().Index("dating_profile").Type("zhenai").BodyJson(item).Do(context.Background())
 	if err != nil {
-		return "",err
+		return "", err
 	}
-	return res.Id,nil
+	return res.Id, nil
 }

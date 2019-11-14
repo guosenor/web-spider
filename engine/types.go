@@ -1,14 +1,18 @@
 package engine
 
+// Request 请求
 type Request struct {
-	Url string
+	URL        string
 	ParserFunc func([]byte) ParserResult
 }
+
+// ParserResult 解析
 type ParserResult struct {
-	Requests [] Request
-	Items [] interface{}
+	Requests []Request
+	Items    []interface{}
 }
 
-func NilPaser([]byte) ParserResult  {
+// NilPaser 无
+func NilPaser([]byte) ParserResult {
 	return ParserResult{}
 }

@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"testing"
 	"io/ioutil"
+	"testing"
 )
 
 func TestParserCityList(t *testing.T) {
@@ -19,8 +19,8 @@ func TestParserCityList(t *testing.T) {
 		t.Error("result should have %d Requests but had %d", size, len(result.Requests))
 	}
 	for i, url := range expectedUrls {
-		if result.Requests[i].Url != url {
-			t.Error("expected Url #%d: %s; but is %s", i, result.Requests[i].Url)
+		if result.Requests[i].URL != url {
+			t.Error("expected Url #%d: %s; but is %s", i, result.Requests[i].URL)
 		}
 	}
 	if len(result.Items) != size {
